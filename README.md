@@ -18,11 +18,10 @@ See the [Changelog](CHANGELOG.md#200---2025-08-24) for details.
 - **Generate entire folder/file structures** for new projects with a single command.
 - **Customizable templates:** Define your own folder structures in your VS Code settings and create local file templates.
 - **Variable prompts with defaults:** When generating a structure, the extension prompts you for variables (like project name or language) and automatically replaces them in your templates. Each variable can have a default value. These can be set in the folder structures.
-- **Optional files and template lines:** Use `[optionalKey]` markers in your templates and structures to conditionally include files or lines.
+- **Optional files and template lines:** Use `[[optionalKey]]` markers in your templates and structures to conditionally include files or lines.
 - **Cross-platform validation:** Prevents creation of files or folders with invalid or reserved names.
 - **Supports both files and folders:** Easily specify which items are folders or files in your structure.
 - **Skips existing files/folders** to avoid overwriting your work.
-- **One-click revert:** Optionally revert all created files and folders immediately after generation.
 
 
 ## How It Works
@@ -32,7 +31,6 @@ See the [Changelog](CHANGELOG.md#200---2025-08-24) for details.
 3. **Enter values** for any variables (with defaults provided).
 4. **Decide on optional features** (e.g., include CSS or JS).
 5. The extension creates the specified folders and files, filling in templates with your values and skipping invalid or existing items.
-6. **Optionally revert**: After creation, you can undo all generated items with one click.
 
 📖 **Want more detailed guidance?** Check out the [Complete Step-by-Step Guide](https://github.com/Qualyyy/vscode-folder-template-generator/blob/master/docs/guide.md) for step-by-step examples.
 
