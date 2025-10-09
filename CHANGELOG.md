@@ -6,9 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.2.3] – 2025-10-09
+### Changed
+- Updated readme to match latest changes.
+
+### Fixed
+- 'Show overview' button showing even if no items got skipped.
+
+
 ## [2.2.2] – 2025-10-03
 ### Changed
-- vscode version to 1.95.0
+- Minimum VS Code version to 1.95.0.
 
 
 ## [2.2.1] – 2025-10-02
