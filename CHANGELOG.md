@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated readme to match latest changes.
 
+### Fixed
+- 'Show overview' button showing even if no items got skipped.
+
 
 ## [2.2.2] – 2025-10-03
 ### Changed
