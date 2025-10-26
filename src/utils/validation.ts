@@ -85,6 +85,13 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
         uniqueOptionals.add(name);
     }
 
+    // Exit if in both variables and optionals
+    for (const name of uniqueOptionals) {
+        if (uniqueVariables.has(name)) {
+            errorMessage += `\n    - Name '${name}' is in both variables and optionals`;
+        }
+    }
+
     // Exit if duplicate file
     const uniqueFiles = new Set<string>();
     const duplicateFiles = new Set<string>();

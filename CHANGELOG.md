@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Invalid structure error message:
   - Now shows all errors instead of the first detected one.
 
+### Added
+- Structure validation:
+  - Cancels generation when a name is in both variables and optionals
+
 
 ## [2.2.4] – 2025-10-09
 ### Fixed
