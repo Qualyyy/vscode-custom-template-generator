@@ -63,29 +63,38 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
 
     // Exit if duplicate variable
     const uniqueVariables = new Set<string>();
+    const duplicateVariables = new Set<string>();
     for (const variable of structureVariables) {
-        if (uniqueVariables.has(variable.varName)) {
-            errorMessage += `\n    - Duplicate variable '${variable.varName}'`;
+        const name = variable.varName;
+        if (uniqueVariables.has(name) && !duplicateVariables.has(name)) {
+            errorMessage += `\n    - Duplicate variable '${name}'`;
+            duplicateVariables.add(name);
         }
-        uniqueVariables.add(variable.varName);
+        uniqueVariables.add(name);
     }
 
     // Exit if duplicate optional
     const uniqueOptionals = new Set<string>();
+    const duplicateOptionals = new Set<string>();
     for (const optional of structureOptionals) {
-        if (uniqueOptionals.has(optional.optName)) {
-            errorMessage += `\n    - Duplicate optional '${optional.optName}'`;
+        const name = optional.optName;
+        if (uniqueOptionals.has(name) && !duplicateOptionals.has(name)) {
+            errorMessage += `\n    - Duplicate optional '${name}'`;
+            duplicateOptionals.add(name);
         }
-        uniqueOptionals.add(optional.optName);
+        uniqueOptionals.add(name);
     }
 
     // Exit if duplicate file
     const uniqueFiles = new Set<string>();
+    const duplicateFiles = new Set<string>();
     for (const file of structureStructure) {
-        if (uniqueFiles.has(file.fileName)) {
-            errorMessage += `\n    - Duplicate file '${file.fileName}'`;
+        const name = file.fileName;
+        if (uniqueFiles.has(name) && !duplicateFiles.has(name)) {
+            errorMessage += `\n    - Duplicate file '${name}'`;
+            duplicateFiles.add(name);
         }
-        uniqueFiles.add(file.fileName);
+        uniqueFiles.add(name);
     }
 
     if (errorMessage) {
