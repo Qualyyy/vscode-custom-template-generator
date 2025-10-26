@@ -54,18 +54,18 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
     const structureOptionals = structure.optionals || [];
     const structureStructure = structure.structure;
 
+    let errorMessage = '';
+
     // Exit if structure doesn't have any files
     if (!structureStructure) {
-        vscode.window.showErrorMessage('This structure doesn\'t have any files. Please update your structure', { modal: true });
-        return false;
+        errorMessage += '\n    - The structure doesn\'t contain any files';
     }
 
     // Exit if duplicate variable
     const uniqueVariables = new Set<string>();
     for (const variable of structureVariables) {
         if (uniqueVariables.has(variable.varName)) {
-            vscode.window.showErrorMessage(`Duplicate variable '${variable.varName}'. Please update your structure`, { modal: true });
-            return false;
+            errorMessage += `\n    - Duplicate variable '${variable.varName}'`;
         }
         uniqueVariables.add(variable.varName);
     }
@@ -74,8 +74,7 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
     const uniqueOptionals = new Set<string>();
     for (const optional of structureOptionals) {
         if (uniqueOptionals.has(optional.optName)) {
-            vscode.window.showErrorMessage(`Duplicate optional '${optional.optName}'. Please update your structure`, { modal: true });
-            return false;
+            errorMessage += `\n    - Duplicate optional '${optional.optName}'`;
         }
         uniqueOptionals.add(optional.optName);
     }
@@ -84,10 +83,15 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
     const uniqueFiles = new Set<string>();
     for (const file of structureStructure) {
         if (uniqueFiles.has(file.fileName)) {
-            vscode.window.showErrorMessage(`Duplicate file '${file.fileName}'. Please update your structure`, { modal: true });
-            return false;
+            errorMessage += `\n    - Duplicate file '${file.fileName}'`;
         }
         uniqueFiles.add(file.fileName);
+    }
+
+    if (errorMessage) {
+        errorMessage = 'Generating structure failed:' + errorMessage + '\n\nPlease update your structure.';
+        await vscode.window.showErrorMessage(errorMessage, { modal: true });
+        return false;
     }
 
     return true;
