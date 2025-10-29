@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Structure validation:
-  - Cancels generation when a name is in both variables and optionals
+  - Cancels generation when a name is in both variables and optionals.
 
 
 ## [2.2.4] – 2025-10-09
