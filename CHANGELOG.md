@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2025-10-26
 ### Changed
 - Invalid structure error message:
-  - Now shows all errors instead of the first detected one.
+  - Shows no details. When pressing 'Show More', the user will see why it's invalid.
+  - Second message shows all errors instead of the first detected one.
 
 ### Added
 - Structure validation:

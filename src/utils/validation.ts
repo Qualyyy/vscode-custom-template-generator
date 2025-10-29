@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { Structure } from '../types';
+import { promptShowInvalidReason } from './promptUtils';
 
 export function isValidName(name: string): boolean {
     const forbidden = /[\\\/:\*\?"<>\|]/;
@@ -105,8 +106,7 @@ export async function isValidStructure(structure: Structure): Promise<boolean> {
     }
 
     if (errorMessage) {
-        errorMessage = 'Generating structure failed:' + errorMessage + '\n\nPlease update your structure.';
-        await vscode.window.showErrorMessage(errorMessage, { modal: true });
+        promptShowInvalidReason(errorMessage);
         return false;
     }
 
