@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.3.0] – 2025-11-10
+### Changed
+- Invalid structure error message:
+  - Shows no details. When pressing 'Show More', the user will see why it's invalid.
+  - Second message shows all errors instead of only the first detected one.
+
+### Added
+- Structure validation:
+  - Cancels generation when a name is in both variables and optionals.
+
+
 ## [2.2.4] – 2025-10-09
 ### Fixed
 - Added .env to .vscodeignore:

@@ -90,3 +90,11 @@ export async function promptShowSkippedItems(skippedItems: { [key: string]: stri
         vscode.window.showInformationMessage(`Successfully created ${createdItemsCount} item${createdItemsCount !== 1 ? 's' : ''}.`);
     }
 }
+
+export async function promptShowInvalidReason(errorMessage: string) {
+    const showMore = await vscode.window.showErrorMessage('Invalid structure.\nSelect \'Show More\' to see reason.', { modal: true }, 'Show More') === 'Show More';
+    if (showMore) {
+        errorMessage = 'Invalid structure:' + errorMessage + '\n\nPlease update your structure.';
+        await vscode.window.showInformationMessage(errorMessage, { modal: true });
+    }
+}
