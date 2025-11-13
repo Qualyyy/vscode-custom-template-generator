@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { getTargetPath } from './utils/pathUtils';
-import { isValidName, isValidStructure, validateConfig } from './utils/validation';
+import { isValidStructure, validateConfig } from './utils/validation';
 import { createFileContent, skipFile } from './utils/fileUtils';
 import { getConfig } from './utils/configUtils';
 import { promptNewFolderName, promptShowSkippedItems, promptStructureSelect, promptValues } from './utils/promptUtils';
