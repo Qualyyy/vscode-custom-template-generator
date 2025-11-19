@@ -31,6 +31,10 @@
       {
         "command": "folder-template-generator.generateTemplate",
         "title": "Generate Template"
+      },
+      {
+        "command": "folder-template-generator.generateFile",
+        "title": "Generate File"
       }
     ],
     "menus": {
