@@ -1,23 +1,14 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import { StructureItem } from '../types';
-import { isValidName } from './validation';
+import * as path from 'path';
+import { directoryItem, Optional, StructureItem, Variable } from '../types';
+import { isValidName, validatePathParts } from './validation';
 
 export function skipFile(item: StructureItem, filePath: string, optionals: { [key: string]: boolean; }): string {
     const fileName = item.fileName;
 
-    // Check for invalid parts in fileName
-    const fileNameParts = fileName.split(/[\\/]/);
-    let invalidPart;
-    for (const part of fileNameParts) {
-        if (!isValidName(part)) {
-            invalidPart = part;
-            break;
-        }
-    }
-
     // Skip item if the name is invalid
-    if (invalidPart) {
+    if (!validatePathParts(fileName)) {
         return 'Invalid fileName. Avoid special characters and reserved names. Please update your template';
     }
 
@@ -47,15 +38,12 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
         let filteredParts: string[] = [];
 
         for (let part of contentParts) {
-            const matches = [...part.matchAll(/\[\[([a-zA-Z0-9_]+)\]\]/g)];
+            const matches = [...part.matchAll(/\[\[\?([a-zA-Z0-9_]+)\]\]/g)];
             let skipPart = false;
 
             if (matches) {
                 for (const match of matches) {
                     const marker = match[1];
-                    if (variables[marker]) {
-                        continue;
-                    }
                     if (marker in optionals) {
                         // Skip if false
                         if (!optionals[marker]) {
@@ -82,4 +70,55 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
         }
     }
     return fileContent;
+}
+
+export function getVariables(templateContent: string): Variable[] {
+    const variableMatches = [...templateContent.matchAll(/\[\[([a-zA-Z0-9_]+)\]\]/g)];
+
+    const uniqueVariables = new Set<string>();
+    const variables: Variable[] = [];
+
+    for (const match of variableMatches) {
+        const varName = match[1];
+
+        if (!uniqueVariables.has(varName)) {
+            uniqueVariables.add(varName);
+            variables.push({
+                varName,
+                default: varName
+            });
+        }
+    }
+
+    return variables;
+}
+
+export function getOptionals(templateContent: string): Optional[] {
+    const optionalMatches = [...templateContent.matchAll(/\[\[\?([a-zA-Z0-9_]+)\]\]/g)];
+
+    const uniqueOptionals = new Set<string>();
+    const optionals: Optional[] = [];
+
+    for (const match of optionalMatches) {
+        const optName = match[1];
+
+        if (!uniqueOptionals.has(optName)) {
+            uniqueOptionals.add(optName);
+            optionals.push({
+                optName: optName,
+                value: undefined
+            });
+        }
+    }
+
+    return optionals;
+}
+
+export function getDirectoryContent(directory: string): directoryItem[] {
+    const items = fs.readdirSync(directory);
+    const directoryContent = items.map(item => ({
+        itemPath: item,
+        type: fs.statSync(path.join(directory, item)).isDirectory() ? '📁' : '📄'
+    }));
+    return directoryContent;
 }
