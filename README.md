@@ -9,13 +9,14 @@
 
 **Folder Template Generator** is a Visual Studio Code extension that lets you quickly scaffold project folders and files from customizable templates, with variable substitution, optional files/lines, and robust cross-platform validation.
 
-**⚠️ Version x.y.z BREAKING CHANGE**  
-Optionals in template files should now have a '?'. `[[?opt]]` instead of `[[opt]]`
-See the Changelog for details.
+**⚠️ Version 3.0.0 BREAKING CHANGE**  
+Optionals in template files should now have a '?': `[[?opt]]` instead of `[[opt]]`.  
+New command `generateFile`.  
+See the [Changelog]([Changelog](CHANGELOG.md#300--2025-11-19)) for details.
 
 **⚠️ Version 2.0.0 BREAKING CHANGE**  
 Template variables now use **double square brackets** `[[var]]` instead of `[var]`.  
-See the [Changelog](CHANGELOG.md#200---2025-08-24) for details.
+See the [Changelog](CHANGELOG.md#200--2025-08-24) for details.
 
 ## Features
 
