@@ -19,7 +19,6 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     if (!targetPath) {
         return;
     }
-    console.log(targetPath, createNewFolder);
 
     // Prompt user to pick a template
     const templatePath = await promptTemplateSelect(templatesDirectory);
@@ -38,8 +37,6 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     console.log(templateOptionals);
 
     const filePath = path.join(targetPath, templateName);
-
-    console.log(templatePath, filePath);
 
     if (fs.existsSync(filePath)) {
         await vscode.window.showErrorMessage('File already exists', { modal: true });
