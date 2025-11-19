@@ -5,7 +5,7 @@ import { validateConfigTemplatesDirectory } from '../utils/validation';
 import { getTargetPath } from '../utils/pathUtils';
 import { promptTemplateSelect, promptValues } from '../utils/promptUtils';
 import * as path from 'path';
-import { getOptionals, getVariables } from '../utils/fileUtils';
+import { createFileContent, getOptionals, getVariables } from '../utils/fileUtils';
 
 export async function generateFileCommand(Uri?: vscode.Uri) {
     // Get the user's set templatesDirectory
@@ -42,6 +42,7 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
         return;
     }
     const { variables, optionals } = valuesResult;
+    const fileContent = createFileContent(templatePath, variables, optionals);
 
     const filePath = path.join(targetPath, templateName);
 
@@ -50,7 +51,7 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
         return;
     }
 
-    fs.writeFileSync(filePath, templateContent);
+    fs.writeFileSync(filePath, fileContent);
 
     if (createNewFolder) {
         vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(targetPath), false);
