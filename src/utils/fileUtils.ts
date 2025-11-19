@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { directoryItem, StructureItem, Variable } from '../types';
+import { directoryItem, Optional, StructureItem, Variable } from '../types';
 import { isValidName } from './validation';
 
 export function skipFile(item: StructureItem, filePath: string, optionals: { [key: string]: boolean; }): string {
@@ -92,6 +92,17 @@ export function getVariables(templateContent: string): Variable[] {
     }));
 
     return variables;
+}
+
+export function getOptionals(templateContent: string): Optional[] {
+    const optionalMatches = [...templateContent.matchAll(/\[\[\?([a-zA-Z0-9_]+)\]\]/g)];
+
+    const optionals: Optional[] = optionalMatches.map(match => ({
+        optName: match[1],
+        value: undefined
+    }));
+
+    return optionals;
 }
 
 export function getDirectoryContent(directory: string): directoryItem[] {

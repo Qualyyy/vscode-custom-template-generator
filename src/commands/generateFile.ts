@@ -5,7 +5,7 @@ import { validateConfigTemplatesDirectory } from '../utils/validation';
 import { getTargetPath } from '../utils/pathUtils';
 import { promptTemplateSelect } from '../utils/promptUtils';
 import * as path from 'path';
-import { getVariables } from '../utils/fileUtils';
+import { getOptionals, getVariables } from '../utils/fileUtils';
 
 export async function generateFileCommand(Uri?: vscode.Uri) {
     // Get the user's set templatesDirectory
@@ -29,9 +29,13 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     const templateContent = fs.readFileSync(templatePath, 'utf8');
     const templateName = path.basename(templatePath);
 
-    // Get the variables from the file
+    // Get the variables from the template
     const templateVariables = getVariables(templateContent);
     console.log(templateVariables);
+
+    // Get the optionals from the template
+    const templateOptionals = getOptionals(templateContent);
+    console.log(templateOptionals);
 
     const filePath = path.join(targetPath, templateName);
 
