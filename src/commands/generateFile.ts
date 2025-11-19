@@ -10,9 +10,14 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     }
 
     // Get the target path
-    const targetPath = (await getTargetPath(Uri)).targetPath;
+    const { targetPath, createNewFolder } = await getTargetPath(Uri);
     if (!targetPath) {
         return;
     }
-    console.log(targetPath);
+    console.log(targetPath, createNewFolder);
+
+    if (createNewFolder) {
+        vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(targetPath), false);
+        // TODO: open the file
+    }
 }
