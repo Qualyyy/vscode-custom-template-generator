@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "icon": "resources/icon.png",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Qualyyy/vscode-folder-template-generator.git"
@@ -31,12 +31,21 @@
       {
         "command": "folder-template-generator.generateTemplate",
         "title": "Generate Template"
+      },
+      {
+        "command": "folder-template-generator.generateFile",
+        "title": "Generate File"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "command": "folder-template-generator.generateTemplate",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "folder-template-generator.generateFile",
           "when": "explorerResourceIsFolder",
           "group": "navigation@9"
         }

@@ -2,7 +2,8 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Optional, Structure, Variable } from '../types';
-import { isValidName } from './validation';
+import { validatePathParts } from './validation';
+import { getDirectoryContent } from './fileUtils';
 
 export async function promptStructureSelect(structures: any[]): Promise<Structure | null> {
     const structureNames = structures.map(structure => structure.name);
@@ -24,21 +25,49 @@ export async function promptStructureSelect(structures: any[]): Promise<Structur
     return structure;
 }
 
-export async function promptNewFolderName(targetPath: string, structureName: string): Promise<string | null> {
+export async function promptTemplateSelect(templatesDirectory: string): Promise<string | null> {
+    let currentDirectory = templatesDirectory;
+
+    while (fs.statSync(currentDirectory).isDirectory()) {
+        const directoryContent = await getDirectoryContent(currentDirectory);
+
+        const items = directoryContent.map(item => `${item.type} ${item.itemPath}`);
+        if (path.normalize(currentDirectory) !== path.normalize(templatesDirectory)) {
+            items.push('↩️ Return');
+        }
+
+        const pickedItem = await vscode.window.showQuickPick(items, { placeHolder: 'Pick template' });
+        if (!pickedItem) {
+            return null;
+        }
+
+        const pickedIndex = items.indexOf(pickedItem);
+        if (pickedIndex === directoryContent.length) {
+            currentDirectory = path.dirname(currentDirectory);
+            continue;
+        }
+        const pickedPath = directoryContent[pickedIndex].itemPath;
+
+        currentDirectory = path.join(currentDirectory, pickedPath);
+    }
+
+    return currentDirectory;
+}
+
+export async function promptItemName(targetPath: string, defaultValue: string, type: string): Promise<string | null> {
     while (true) {
-        let newFolderPath = '';
-        const folderName = await vscode.window.showInputBox({ title: 'Enter name for new folder', value: structureName });
-        if (!folderName) { return null; }
-        if (!isValidName(folderName)) {
-            await vscode.window.showErrorMessage('Invalid folder name. Avoid special characters and reserved names', { modal: true });
+        const itemName = await vscode.window.showInputBox({ title: `Enter name for new ${type.toLowerCase()}`, value: defaultValue });
+        if (!itemName) { return null; }
+        if (!validatePathParts(itemName)) {
+            await vscode.window.showErrorMessage(`Invalid ${type.toLowerCase()} name. Avoid special characters and reserved names`, { modal: true });
             continue;
         }
-        newFolderPath = path.join(targetPath, folderName);
-        if (fs.existsSync(newFolderPath)) {
-            await vscode.window.showErrorMessage(`Folder "${folderName}" already exists. Please choose another name.`, { modal: true });
+        const newPath = path.join(targetPath, itemName);
+        if (fs.existsSync(newPath)) {
+            await vscode.window.showErrorMessage(`${type} "${itemName}" already exists. Please choose another name.`, { modal: true });
             continue;
         }
-        targetPath = newFolderPath;
+        targetPath = newPath;
         break;
     }
     return targetPath;

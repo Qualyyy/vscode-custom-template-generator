@@ -195,7 +195,7 @@ To create a template:
 
 Inside templates, you can add:
 - Variables: `[[variableName]]` - Will be replaced with user input
-- Optionals: `[[optionalName]]` - Lines with optionals will be removed if user chooses "no"
+- Optionals: `[[?optionalName]]` - Lines with optionals will be removed if user chooses "no"
 
 Example template: index.html
 
@@ -205,8 +205,8 @@ Example template: index.html
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">[[addCss]]
-    <script defer src="js/index.js"></script>[[addJs]]
+    <link rel="stylesheet" href="css/style.css">[[?addCss]]
+    <script defer src="js/index.js"></script>[[?addJs]]
     <title>[[projectName]]</title>
 </head>
 
@@ -218,7 +218,7 @@ Example template: index.html
 ```
 In this example:
 - `[[projectLanguage]]` and `[[projectName]]` will be replaced with user input
-- Lines with `[[addCss]]` and `[[addJs]]` will be removed if user chooses "no"
+- Lines with `[[?addCss]]` and `[[?addJs]]` will be removed if user chooses "no"
 
 ## 3. Generating a Structure
 

@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+
+## [3.0.0] - 2025-11-19
+### 🚨 BREAKING CHANGES
+- Optionals in template files should now have a '?'.
+  - Example: `[[addCss]]` &rarr; `[[?addCss]]`
+
+### Added
+- **NEW COMMAND** `generateFile`:
+  - Allows generation of the files in your templateDirectory.
+  - No setup in settings.json required.
+  - Variables and optionals will still get prompted.
+  - Right click a folder or use the command to try.
+- Path nesting:
+  - You can now nest folders in the new folder and file names (e.g. js/index.js).
+  - Nested folders will get created if non-existent.
+
+### Changed
+- Moved "generateTemplate" command logic to `commands/generateTemplate.ts` for better code maintainability and future-proofing for new commands.
+
+
 ## [2.3.0] – 2025-11-10
 ### Changed
 - Invalid structure error message:
