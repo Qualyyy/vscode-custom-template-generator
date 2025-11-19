@@ -2,23 +2,13 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 import * as path from 'path';
 import { directoryItem, Optional, StructureItem, Variable } from '../types';
-import { isValidName } from './validation';
+import { isValidName, validatePathParts } from './validation';
 
 export function skipFile(item: StructureItem, filePath: string, optionals: { [key: string]: boolean; }): string {
     const fileName = item.fileName;
 
-    // Check for invalid parts in fileName
-    const fileNameParts = fileName.split(/[\\/]/);
-    let invalidPart;
-    for (const part of fileNameParts) {
-        if (!isValidName(part)) {
-            invalidPart = part;
-            break;
-        }
-    }
-
     // Skip item if the name is invalid
-    if (invalidPart) {
+    if (!validatePathParts(fileName)) {
         return 'Invalid fileName. Avoid special characters and reserved names. Please update your template';
     }
 

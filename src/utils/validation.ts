@@ -18,6 +18,17 @@ export function isValidName(name: string): boolean {
     return true;
 }
 
+export function validatePathParts(path: string): boolean {
+    const pathParts = path.split(/[\\/]/);
+
+    for (const part of pathParts) {
+        if (!isValidName(part)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 export async function validateConfigStructures(structures: Structure[]): Promise<boolean> {
     // No structures
     if (structures.length === 0) {
