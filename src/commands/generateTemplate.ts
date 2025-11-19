@@ -69,7 +69,7 @@ export async function generateTemplateCommand(Uri?: vscode.Uri) {
 
     // Create new folder if needed
     if (createNewFolder) {
-        fs.mkdirSync(targetPath);
+        fs.mkdirSync(targetPath, { recursive: true });
     }
 
     const skippedItems: { [key: string]: string } = {};

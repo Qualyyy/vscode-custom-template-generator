@@ -53,6 +53,7 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     const { variables, optionals } = valuesResult;
     const fileContent = createFileContent(templatePath, variables, optionals);
 
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, fileContent);
 
     if (createNewFolder) {

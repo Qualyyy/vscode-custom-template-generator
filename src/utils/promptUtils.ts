@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Optional, Structure, Variable } from '../types';
-import { isValidName } from './validation';
+import { validatePathParts } from './validation';
 import { getDirectoryContent } from './fileUtils';
 
 export async function promptStructureSelect(structures: any[]): Promise<Structure | null> {
@@ -58,7 +58,7 @@ export async function promptItemName(targetPath: string, defaultValue: string, t
     while (true) {
         const itemName = await vscode.window.showInputBox({ title: `Enter name for new ${type.toLowerCase()}`, value: defaultValue });
         if (!itemName) { return null; }
-        if (!isValidName(itemName)) {
+        if (!validatePathParts(itemName)) {
             await vscode.window.showErrorMessage(`Invalid ${type.toLowerCase()} name. Avoid special characters and reserved names`, { modal: true });
             continue;
         }
