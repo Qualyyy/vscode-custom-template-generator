@@ -83,13 +83,22 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
 }
 
 export function getVariables(templateContent: string): Variable[] {
-
     const variableMatches = [...templateContent.matchAll(/\[\[([a-zA-Z0-9_]+)\]\]/g)];
 
-    const variables: Variable[] = variableMatches.map(match => ({
-        varName: match[1],
-        default: match[1]
-    }));
+    const uniqueVariables = new Set<string>();
+    const variables: Variable[] = [];
+
+    for (const match of variableMatches) {
+        const varName = match[1];
+
+        if (!uniqueVariables.has(varName)) {
+            uniqueVariables.add(varName);
+            variables.push({
+                varName,
+                default: varName
+            });
+        }
+    }
 
     return variables;
 }
@@ -97,10 +106,20 @@ export function getVariables(templateContent: string): Variable[] {
 export function getOptionals(templateContent: string): Optional[] {
     const optionalMatches = [...templateContent.matchAll(/\[\[\?([a-zA-Z0-9_]+)\]\]/g)];
 
-    const optionals: Optional[] = optionalMatches.map(match => ({
-        optName: match[1],
-        value: undefined
-    }));
+    const uniqueOptionals = new Set<string>();
+    const optionals: Optional[] = [];
+
+    for (const match of optionalMatches) {
+        const optName = match[1];
+
+        if (!uniqueOptionals.has(optName)) {
+            uniqueOptionals.add(optName);
+            optionals.push({
+                optName: optName,
+                value: undefined
+            });
+        }
+    }
 
     return optionals;
 }
