@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [unreleased]
+### Changed
+- Moved "generateTemplate" command logic to `commands/generateTemplate.ts` for better code maintainability and future-proofing for new commands.
+
+
 ## [2.3.0] – 2025-11-10
 ### Changed
 - Invalid structure error message:
