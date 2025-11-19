@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import { StructureItem } from '../types';
+import * as path from 'path';
+import { directoryItem, StructureItem } from '../types';
 import { isValidName } from './validation';
 
 export function skipFile(item: StructureItem, filePath: string, optionals: { [key: string]: boolean; }): string {
@@ -82,4 +83,13 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
         }
     }
     return fileContent;
+}
+
+export function getDirectoryContent(directory: string): directoryItem[] {
+    const items = fs.readdirSync(directory);
+    const directoryContent = items.map(item => ({
+        itemPath: item,
+        type: fs.statSync(path.join(directory, item)).isDirectory() ? '📁' : '📄'
+    }));
+    return directoryContent;
 }

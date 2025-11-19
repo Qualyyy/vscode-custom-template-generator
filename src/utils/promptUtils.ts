@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Optional, Structure, Variable } from '../types';
 import { isValidName } from './validation';
+import { getDirectoryContent } from './fileUtils';
 
 export async function promptStructureSelect(structures: any[]): Promise<Structure | null> {
     const structureNames = structures.map(structure => structure.name);
@@ -25,20 +26,32 @@ export async function promptStructureSelect(structures: any[]): Promise<Structur
 }
 
 export async function promptTemplateSelect(templatesDirectory: string): Promise<string | null> {
-    const options: vscode.OpenDialogOptions = {
-        canSelectMany: false,
-        openLabel: 'Select template',
-        canSelectFiles: true,
-        canSelectFolders: false,
-        defaultUri: vscode.Uri.file(templatesDirectory)
-    };
-    const templatePath = await vscode.window.showOpenDialog(options);
+    let currentDirectory = templatesDirectory;
 
-    if (!templatePath) {
-        vscode.window.showErrorMessage('No template selected', { modal: true });
-        return null;
+    while (fs.statSync(currentDirectory).isDirectory()) {
+        const directoryContent = await getDirectoryContent(currentDirectory);
+
+        const items = directoryContent.map(item => `${item.type} ${item.itemPath}`);
+        if (currentDirectory !== templatesDirectory) {
+            items.push('↩️ Return');
+        }
+
+        const pickedItem = await vscode.window.showQuickPick(items, { placeHolder: 'Pick template' });
+        if (!pickedItem) {
+            return null;
+        }
+
+        const pickedIndex = items.indexOf(pickedItem);
+        if (pickedIndex === directoryContent.length) {
+            currentDirectory = path.dirname(currentDirectory);
+            continue;
+        }
+        const pickedPath = directoryContent[pickedIndex].itemPath;
+
+        currentDirectory = path.join(currentDirectory, pickedPath);
     }
-    return templatePath[0].fsPath;
+
+    return currentDirectory;
 }
 
 export async function promptNewFolderName(targetPath: string, structureName: string): Promise<string | null> {

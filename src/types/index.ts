@@ -21,3 +21,8 @@ export interface StructureItem {
     template?: string;
     optional?: string;
 }
+
+export interface directoryItem {
+    itemPath: string;
+    type: string
+}
