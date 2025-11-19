@@ -42,7 +42,7 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     console.log(templatePath, filePath);
 
     if (fs.existsSync(filePath)) {
-        vscode.window.showErrorMessage('File already exists', { modal: true });
+        await vscode.window.showErrorMessage('File already exists', { modal: true });
         return;
     }
 
