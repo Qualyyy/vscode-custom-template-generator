@@ -57,6 +57,7 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
 
     if (createNewFolder) {
         vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(targetPath), false);
-        // TODO: open the file
+        return;
     }
+    vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath));
 }
