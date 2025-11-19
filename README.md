@@ -9,6 +9,10 @@
 
 **Folder Template Generator** is a Visual Studio Code extension that lets you quickly scaffold project folders and files from customizable templates, with variable substitution, optional files/lines, and robust cross-platform validation.
 
+**⚠️ Version x.y.z BREAKING CHANGE**  
+Optionals in template files should now have a '?'. `[[?opt]]` instead of `[[opt]]`
+See the Changelog for details.
+
 **⚠️ Version 2.0.0 BREAKING CHANGE**  
 Template variables now use **double square brackets** `[[var]]` instead of `[var]`.  
 See the [Changelog](CHANGELOG.md#200---2025-08-24) for details.
@@ -18,7 +22,7 @@ See the [Changelog](CHANGELOG.md#200---2025-08-24) for details.
 - **Generate entire folder/file structures** for new projects with a single command.
 - **Customizable templates:** Define your own folder structures in your VS Code settings and create local file templates.
 - **Variable prompts with defaults:** When generating a structure, the extension prompts you for variables (like project name or language) and automatically replaces them in your templates. Each variable can have a default value. These can be set in the folder structures.
-- **Optional files and template lines:** Use `[[optionalKey]]` markers in your templates and structures to conditionally include files or lines.
+- **Optional files and template lines:** Use `[[?optionalKey]]` markers in your templates and structures to conditionally include files or lines.
 - **Cross-platform validation:** Prevents creation of files or folders with invalid or reserved names.
 - **Supports both files and folders:** Easily specify which items are folders or files in your structure.
 - **Skips existing files/folders** to avoid overwriting your work.
@@ -114,8 +118,8 @@ A string path to the directory containing your template files. Template files sh
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">[[addCss]]
-    <script defer src="js/index.js"></script>[[addJs]]
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">[[?addCss]]
+    <script defer src="js/index.js"></script>[[?addJs]]
     <title>[[projectName]]</title>
 </head>
 
@@ -131,7 +135,7 @@ A string path to the directory containing your template files. Template files sh
 - **Variables:**
 Use `[[variableName]]` in your template lines to have them replaced with user input.
 - **Optionals:**
-Use `[[optionalKey]]` at the end of a line in your template, or as `"optional": "key"` in your structure.
+Use `[[?optionalKey]]` at the end of a line in your template, or as `"optional": "key"` in your structure.
 The user will be prompted to include/exclude these items.
 
 ## Validation \& Safety

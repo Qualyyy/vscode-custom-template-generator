@@ -48,15 +48,12 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
         let filteredParts: string[] = [];
 
         for (let part of contentParts) {
-            const matches = [...part.matchAll(/\[\[([a-zA-Z0-9_]+)\]\]/g)];
+            const matches = [...part.matchAll(/\[\[\?([a-zA-Z0-9_]+)\]\]/g)];
             let skipPart = false;
 
             if (matches) {
                 for (const match of matches) {
                     const marker = match[1];
-                    if (variables[marker]) {
-                        continue;
-                    }
                     if (marker in optionals) {
                         // Skip if false
                         if (!optionals[marker]) {

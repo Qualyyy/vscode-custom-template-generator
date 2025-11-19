@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [unreleased]
+### 🚨 BREAKING CHANGES
+- Optionals in template files should now have a '?'.
+  - Example: `[[addCss]]` &rarr; `[[?addCss]]`
+
 ### Changed
 - Moved "generateTemplate" command logic to `commands/generateTemplate.ts` for better code maintainability and future-proofing for new commands.
 
