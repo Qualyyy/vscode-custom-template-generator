@@ -25,8 +25,17 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     if (!templatePath) {
         return;
     }
-    const templateContent = fs.readFileSync(templatePath, 'utf8');
+
     const templateName = path.basename(templatePath);
+
+    const filePath = path.join(targetPath, templateName);
+
+    if (fs.existsSync(filePath)) {
+        await vscode.window.showErrorMessage('File already exists', { modal: true });
+        return;
+    }
+
+    const templateContent = fs.readFileSync(templatePath, 'utf8');
 
     // Get the variables from the template
     const templateVariables = getVariables(templateContent);
@@ -43,13 +52,6 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     }
     const { variables, optionals } = valuesResult;
     const fileContent = createFileContent(templatePath, variables, optionals);
-
-    const filePath = path.join(targetPath, templateName);
-
-    if (fs.existsSync(filePath)) {
-        await vscode.window.showErrorMessage('File already exists', { modal: true });
-        return;
-    }
 
     fs.writeFileSync(filePath, fileContent);
 
