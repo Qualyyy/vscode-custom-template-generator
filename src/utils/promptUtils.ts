@@ -24,6 +24,23 @@ export async function promptStructureSelect(structures: any[]): Promise<Structur
     return structure;
 }
 
+export async function promptTemplateSelect(templatesDirectory: string): Promise<string | null> {
+    const options: vscode.OpenDialogOptions = {
+        canSelectMany: false,
+        openLabel: 'Select template',
+        canSelectFiles: true,
+        canSelectFolders: false,
+        defaultUri: vscode.Uri.file(templatesDirectory)
+    };
+    const templatePath = await vscode.window.showOpenDialog(options);
+
+    if (!templatePath) {
+        vscode.window.showErrorMessage('No template selected', { modal: true });
+        return null;
+    }
+    return templatePath[0].fsPath;
+}
+
 export async function promptNewFolderName(targetPath: string, structureName: string): Promise<string | null> {
     while (true) {
         let newFolderPath = '';
