@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { directoryItem, StructureItem } from '../types';
+import { directoryItem, StructureItem, Variable } from '../types';
 import { isValidName } from './validation';
 
 export function skipFile(item: StructureItem, filePath: string, optionals: { [key: string]: boolean; }): string {
@@ -83,6 +83,18 @@ export function createFileContent(fileTemplatePath: string, variables: { [key: s
         }
     }
     return fileContent;
+}
+
+export function getVariables(templateContent: string): Variable[] {
+
+    const variableMatches = [...templateContent.matchAll(/\[\[([a-zA-Z0-9_]+)\]\]/g)];
+
+    const variables: Variable[] = variableMatches.map(match => ({
+        varName: match[1],
+        default: match[1]
+    }));
+
+    return variables;
 }
 
 export function getDirectoryContent(directory: string): directoryItem[] {
