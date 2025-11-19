@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { getTargetPath } from '../utils/pathUtils';
-import { isValidStructure, validateConfig } from '../utils/validation';
+import { isValidStructure, validateConfigStructures, validateConfigTemplatesDirectory } from '../utils/validation';
 import { createFileContent, skipFile } from '../utils/fileUtils';
 import { getConfig } from '../utils/configUtils';
 import { promptNewFolderName, promptShowSkippedItems, promptStructureSelect, promptValues } from '../utils/promptUtils';
@@ -10,7 +10,7 @@ import { promptNewFolderName, promptShowSkippedItems, promptStructureSelect, pro
 export async function generateTemplateCommand(Uri?: vscode.Uri) {
     // Get the user's set structures and templatesDirectory
     const { structures, templatesDirectory } = await getConfig();
-    if (!(await validateConfig(structures, templatesDirectory))) {
+    if (!(await validateConfigStructures(structures) && await validateConfigTemplatesDirectory(templatesDirectory))) {
         return;
     }
 

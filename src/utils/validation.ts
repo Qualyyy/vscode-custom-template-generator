@@ -18,7 +18,7 @@ export function isValidName(name: string): boolean {
     return true;
 }
 
-export async function validateConfig(structures: Structure[], templatesDirectory: string): Promise<boolean> {
+export async function validateConfigStructures(structures: Structure[]): Promise<boolean> {
     // No structures
     if (structures.length === 0) {
         await vscode.window.showErrorMessage('You haven\'t created any structures.\nPlease create a structure in your settings.json', { modal: true });
@@ -42,6 +42,10 @@ export async function validateConfig(structures: Structure[], templatesDirectory
         uniqueStructureNames.add(structure.name);
     }
 
+    return true;
+}
+
+export async function validateConfigTemplatesDirectory(templatesDirectory: string): Promise<boolean> {
     // No templatesDirectory
     if (!templatesDirectory) {
         return false;
