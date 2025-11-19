@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { getConfig } from '../utils/configUtils';
 import { validateConfigTemplatesDirectory } from '../utils/validation';
 import { getTargetPath } from '../utils/pathUtils';
-import { promptTemplateSelect } from '../utils/promptUtils';
+import { promptTemplateSelect, promptValues } from '../utils/promptUtils';
 import * as path from 'path';
 import { getOptionals, getVariables } from '../utils/fileUtils';
 
@@ -35,6 +35,13 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
     // Get the optionals from the template
     const templateOptionals = getOptionals(templateContent);
     console.log(templateOptionals);
+
+    // Prompt values for variables and optionals
+    const valuesResult = await promptValues(templateVariables, templateOptionals);
+    if (!valuesResult) {
+        return;
+    }
+    const { variables, optionals } = valuesResult;
 
     const filePath = path.join(targetPath, templateName);
 
