@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-## [unreleased]
+## [3.0.0] - 2025-11-19
 ### 🚨 BREAKING CHANGES
 - Optionals in template files should now have a '?'.
   - Example: `[[addCss]]` &rarr; `[[?addCss]]`
