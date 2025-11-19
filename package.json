@@ -43,6 +43,11 @@
           "command": "folder-template-generator.generateTemplate",
           "when": "explorerResourceIsFolder",
           "group": "navigation@9"
+        },
+        {
+          "command": "folder-template-generator.generateFile",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@9"
         }
       ]
     },
