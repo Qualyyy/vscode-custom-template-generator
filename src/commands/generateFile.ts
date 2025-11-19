@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { getConfig } from '../utils/configUtils';
 import { validateConfigTemplatesDirectory } from '../utils/validation';
 import { getTargetPath } from '../utils/pathUtils';
-import { promptTemplateSelect, promptValues } from '../utils/promptUtils';
+import { promptItemName, promptTemplateSelect, promptValues } from '../utils/promptUtils';
 import * as path from 'path';
 import { createFileContent, getOptionals, getVariables } from '../utils/fileUtils';
 
@@ -28,12 +28,12 @@ export async function generateFileCommand(Uri?: vscode.Uri) {
 
     const templateName = path.basename(templatePath);
 
-    const filePath = path.join(targetPath, templateName);
-
-    if (fs.existsSync(filePath)) {
-        await vscode.window.showErrorMessage('File already exists', { modal: true });
+    // const filePath = path.join(targetPath, templateName);
+    const newFileNameResult = await promptItemName(targetPath, templateName, 'File');
+    if (!newFileNameResult) {
         return;
     }
+    const filePath = newFileNameResult;
 
     const templateContent = fs.readFileSync(templatePath, 'utf8');
 

@@ -54,21 +54,20 @@ export async function promptTemplateSelect(templatesDirectory: string): Promise<
     return currentDirectory;
 }
 
-export async function promptNewFolderName(targetPath: string, structureName: string): Promise<string | null> {
+export async function promptItemName(targetPath: string, defaultValue: string, type: string): Promise<string | null> {
     while (true) {
-        let newFolderPath = '';
-        const folderName = await vscode.window.showInputBox({ title: 'Enter name for new folder', value: structureName });
-        if (!folderName) { return null; }
-        if (!isValidName(folderName)) {
-            await vscode.window.showErrorMessage('Invalid folder name. Avoid special characters and reserved names', { modal: true });
+        const itemName = await vscode.window.showInputBox({ title: `Enter name for new ${type.toLowerCase()}`, value: defaultValue });
+        if (!itemName) { return null; }
+        if (!isValidName(itemName)) {
+            await vscode.window.showErrorMessage(`Invalid ${type.toLowerCase()} name. Avoid special characters and reserved names`, { modal: true });
             continue;
         }
-        newFolderPath = path.join(targetPath, folderName);
-        if (fs.existsSync(newFolderPath)) {
-            await vscode.window.showErrorMessage(`Folder "${folderName}" already exists. Please choose another name.`, { modal: true });
+        const newPath = path.join(targetPath, itemName);
+        if (fs.existsSync(newPath)) {
+            await vscode.window.showErrorMessage(`${type} "${itemName}" already exists. Please choose another name.`, { modal: true });
             continue;
         }
-        targetPath = newFolderPath;
+        targetPath = newPath;
         break;
     }
     return targetPath;

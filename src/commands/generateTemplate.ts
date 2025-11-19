@@ -5,7 +5,7 @@ import { getTargetPath } from '../utils/pathUtils';
 import { isValidStructure, validateConfigStructures, validateConfigTemplatesDirectory } from '../utils/validation';
 import { createFileContent, skipFile } from '../utils/fileUtils';
 import { getConfig } from '../utils/configUtils';
-import { promptNewFolderName, promptShowSkippedItems, promptStructureSelect, promptValues } from '../utils/promptUtils';
+import { promptItemName, promptShowSkippedItems, promptStructureSelect, promptValues } from '../utils/promptUtils';
 
 export async function generateTemplateCommand(Uri?: vscode.Uri) {
     // Get the user's set structures and templatesDirectory
@@ -44,7 +44,7 @@ export async function generateTemplateCommand(Uri?: vscode.Uri) {
 
     // Create new folder and change target path if createNewFolder is true
     if (createNewFolder) {
-        const newFolderNameResult = await promptNewFolderName(targetPath, structureName);
+        const newFolderNameResult = await promptItemName(targetPath, structureName, 'Folder');
         if (!newFolderNameResult) {
             return;
         }
