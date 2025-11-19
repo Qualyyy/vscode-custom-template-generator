@@ -32,7 +32,7 @@ export async function promptTemplateSelect(templatesDirectory: string): Promise<
         const directoryContent = await getDirectoryContent(currentDirectory);
 
         const items = directoryContent.map(item => `${item.type} ${item.itemPath}`);
-        if (currentDirectory !== templatesDirectory) {
+        if (path.normalize(currentDirectory) !== path.normalize(templatesDirectory)) {
             items.push('↩️ Return');
         }
 
