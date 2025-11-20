@@ -159,6 +159,16 @@
           "folderTemplateGenerator.templatesDirectory": {
             "type": "string",
             "default": ""
+          },
+          "folderTemplateGenerator.ignoredFolders": {
+            "type": "array",
+            "description": "Ignore these folders when prompted to pick a file template",
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              ".git"
+            ]
           }
         }
       }
