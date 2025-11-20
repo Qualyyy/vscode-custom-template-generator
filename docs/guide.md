@@ -280,6 +280,8 @@ my-awesome-site/
 This works the same way as generating structures, except you don't need to add anything to settings.json.  
 Just right click a folder or use the command to start the process.
 
+To ignore folders or files in your templateDirectory, use the setting `ignoredFolders`.
+
 
 ## Troubleshooting
 

@@ -29,7 +29,7 @@ export async function promptTemplateSelect(templatesDirectory: string): Promise<
     let currentDirectory = templatesDirectory;
 
     while (fs.statSync(currentDirectory).isDirectory()) {
-        const directoryContent = await getDirectoryContent(currentDirectory);
+        const directoryContent = await getDirectoryContent(currentDirectory, templatesDirectory);
 
         const items = directoryContent.map(item => `${item.type} ${item.itemPath}`);
         if (path.normalize(currentDirectory) !== path.normalize(templatesDirectory)) {
