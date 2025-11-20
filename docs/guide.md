@@ -184,7 +184,7 @@ Here's a complete example structure that demonstrates all features:
 ### Setting Up a Template Directory
 
 1. Create a local folder on your PC where you will store all your file templates
-2. Set the directory in your VS Code settings, or generate a structure to get prompted to pick a directory
+2. Set the directory in your VS Code settings, or run the command `Edit Templates`
 
 ### Creating Templates
 
@@ -192,6 +192,8 @@ To create a template:
 1. Create a new file in your templates directory
 2. Write whatever content you want in the file
 3. Use variables and optionals between double square brackets `[[varName]]`
+  
+Note: you can always run the command `Edit Templates` to open your templates directory in a new window
 
 ### Using Variables and Optionals in Templates
 
