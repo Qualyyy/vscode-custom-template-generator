@@ -10,12 +10,13 @@ export function activate(context: vscode.ExtensionContext) {
 		generateTemplateCommand
 	);
 
+	// --- GENERATE FILE --- //
 	const generateFile = vscode.commands.registerCommand(
 		'folder-template-generator.generateFile',
 		generateFileCommand
 	);
 
-	context.subscriptions.push(generateTemplate);
+	context.subscriptions.push(generateTemplate, generateFile);
 }
 
 // This method is called when your extension is deactivated
