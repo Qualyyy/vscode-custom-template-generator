@@ -114,11 +114,23 @@ export function getOptionals(templateContent: string): Optional[] {
     return optionals;
 }
 
-export function getDirectoryContent(directory: string): directoryItem[] {
+export function getDirectoryContent(directory: string, templatesDirectory: string): directoryItem[] {
+    const config = vscode.workspace.getConfiguration('folderTemplateGenerator');
+    let ignoredFolders = config.get<string[]>('ignoredFolders') || [];
+    ignoredFolders = ignoredFolders.map(folder => path.normalize(folder));
+
     const items = fs.readdirSync(directory);
-    const directoryContent = items.map(item => ({
-        itemPath: item,
-        type: fs.statSync(path.join(directory, item)).isDirectory() ? '📁' : '📄'
-    }));
+
+    const directoryContent: directoryItem[] = [];
+    items.forEach(item => {
+        const relativePath = path.relative(templatesDirectory, path.join(directory, item));
+        if (!ignoredFolders.includes(relativePath)) {
+            directoryContent.push({
+                itemPath: item,
+                type: fs.statSync(path.join(directory, item)).isDirectory() ? '📁' : '📄'
+            });
+        }
+    });
+
     return directoryContent;
 }

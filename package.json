@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "icon": "resources/icon.png",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Qualyyy/vscode-folder-template-generator.git"
@@ -159,6 +159,16 @@
           "folderTemplateGenerator.templatesDirectory": {
             "type": "string",
             "default": ""
+          },
+          "folderTemplateGenerator.ignoredFolders": {
+            "type": "array",
+            "description": "Ignore these folders when prompted to pick a file template",
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              ".git"
+            ]
           }
         }
       }
