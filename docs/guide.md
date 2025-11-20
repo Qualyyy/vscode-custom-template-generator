@@ -20,6 +20,7 @@ A VS Code extension by Qualyyy
   - [Three Ways to Generate](#three-ways-to-generate)
   - [Generation Process](#generation-process)
   - [Example Generation Flow:](#example-generation-flow)
+- [4. Generating a file from a template](#4-generating-a-file-from-a-template)
 - [Troubleshooting](#troubleshooting)
 - [Credits](#credits)
 
@@ -30,6 +31,7 @@ This extension helps you quickly generate folder and file structures with custom
 1. **Creating structures** - Define what files and folders you want
 2. **Creating file templates** - Design template files with variables
 3. **Generating a structure** - Use your templates to create new projects
+4. **Generating a file** - Generate a new file based on one of your templates
 
 ## 1. Creating Structures
 
@@ -182,7 +184,7 @@ Here's a complete example structure that demonstrates all features:
 ### Setting Up a Template Directory
 
 1. Create a local folder on your PC where you will store all your file templates
-2. Set the directory in your VS Code settings, or generate a structure to get prompted to pick a directory
+2. Set the directory in your VS Code settings, or run the command `Edit Templates`
 
 ### Creating Templates
 
@@ -190,6 +192,8 @@ To create a template:
 1. Create a new file in your templates directory
 2. Write whatever content you want in the file
 3. Use variables and optionals between double square brackets `[[varName]]`
+  
+Note: you can always run the command `Edit Templates` to open your templates directory in a new window
 
 ### Using Variables and Optionals in Templates
 
@@ -270,6 +274,12 @@ my-awesome-site/
 ├── images/
 └── index.html
 ```
+
+## 4. Generating a file from a template
+
+This works the same way as generating structures, except you don't need to add anything to settings.json.  
+Just right click a folder or use the command to start the process.
+
 
 ## Troubleshooting
 
