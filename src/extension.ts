@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { generateTemplateCommand } from './commands/generateTemplate';
 import { generateFileCommand } from './commands/generateFile';
+import { editTemplatesCommand } from './commands/editTemplates';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -16,7 +17,13 @@ export function activate(context: vscode.ExtensionContext) {
 		generateFileCommand
 	);
 
-	context.subscriptions.push(generateTemplate, generateFile);
+	// --- EDIT TEMPLATES --- //
+	const editTemplates = vscode.commands.registerCommand(
+		'folder-template-generator.editTemplates',
+		editTemplatesCommand
+	);
+
+	context.subscriptions.push(generateTemplate, generateFile, editTemplates);
 }
 
 // This method is called when your extension is deactivated
