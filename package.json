@@ -35,6 +35,10 @@
       {
         "command": "folder-template-generator.generateFile",
         "title": "Generate File"
+      },
+      {
+        "command": "folder-template-generator.editTemplates",
+        "title": "Edit Templates"
       }
     ],
     "menus": {
