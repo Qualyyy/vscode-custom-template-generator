@@ -217,7 +217,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] – 2025-08-09
 ### Added
-- Validation for `folderTemplateGenerator.templatesDirectory`:
+- Validation for `customTemplateGenerator.templatesDirectory`:
   - Shows a modal error if the setting is **not configured** (empty string).
   - Shows a modal error if the configured directory **does not exist**.
   - Provides clear instructions in the error message to update the setting.
@@ -227,7 +227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] – 2025-08-09
 ### Added
 - Initial release: generate folder structures from customizable templates with variable substitution and optionals.
-- Command `folder-template-generator.generateTemplate`.
-- Configuration properties `folderTemplateGenerator.structures` and `folderTemplateGenerator.templatesDirectory`.
+- Command `custom-template-generator.generateTemplate`.
+- Configuration properties `customTemplateGenerator.structures` and `customTemplateGenerator.templatesDirectory`.
 - MIT license.
 - Icon and metadata setup.

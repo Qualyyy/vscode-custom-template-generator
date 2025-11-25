@@ -7,19 +7,19 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// --- GENERATE TEMPLATE --- //
 	const generateTemplate = vscode.commands.registerCommand(
-		'folder-template-generator.generateTemplate',
+		'custom-template-generator.generateTemplate',
 		generateTemplateCommand
 	);
 
 	// --- GENERATE FILE --- //
 	const generateFile = vscode.commands.registerCommand(
-		'folder-template-generator.generateFile',
+		'custom-template-generator.generateFile',
 		generateFileCommand
 	);
 
 	// --- EDIT TEMPLATES --- //
 	const editTemplates = vscode.commands.registerCommand(
-		'folder-template-generator.editTemplates',
+		'custom-template-generator.editTemplates',
 		editTemplatesCommand
 	);
 
