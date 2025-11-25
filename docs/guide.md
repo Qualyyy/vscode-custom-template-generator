@@ -121,7 +121,7 @@ Example:
 
 1. Go to your vscode settings and search for the extension:
    ```
-   @ext:Qualyyy.custom-template-generator
+   @ext:Qualyyy.vscode-custom-template-generator
    ```
 
 2. To add or edit structures, click on 'Edit in settings.json'

@@ -1,9 +1,9 @@
 
 
 # Custom Template Generator
-![Version](https://img.shields.io/visual-studio-marketplace/v/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Version&color=green)
-![Installs](https://img.shields.io/visual-studio-marketplace/i/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Installs&color=blue)
-![Rating](https://img.shields.io/vscode-marketplace/r/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Rating&color=yellow)<br>
+![Version](https://img.shields.io/visual-studio-marketplace/v/Qualyyy.vscode-custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Version&color=green)
+![Installs](https://img.shields.io/visual-studio-marketplace/i/Qualyyy.vscode-custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Installs&color=blue)
+![Rating](https://img.shields.io/vscode-marketplace/r/Qualyyy.vscode-custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Rating&color=yellow)<br>
 ![License](https://img.shields.io/badge/License-MIT-purple.svg?style=flat&logoColor=white)
 ![Last Updated](https://img.shields.io/github/last-commit/Qualyyy/vscode-custom-template-generator?style=flat&logo=github&logoColor=white&label=Last%20Updated&color=orange)
 
