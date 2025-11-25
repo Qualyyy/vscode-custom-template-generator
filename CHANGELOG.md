@@ -6,6 +6,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.0.1] - 2025-11-26
+### Changed
+- Updated CHANGELOG for the rebrand.
+- Updated the extension icon.
+
+
+## [1.0.0] - 2025-11-26
+
+### 🚀 Major Rebrand
+This extension has been renamed from "Folder Template Generator" to "Custom Template Generator" to better reflect its capabilities.
+
+### Breaking Changes
+- Extension ID: `vscode-folder-template-generator` → `vscode-custom-template-generator`
+- Configuration prefix: `folderTemplateGenerator.*` → `customTemplateGenerator.*`
+
+### Migration
+Users of the old extension should:
+1. Install `Custom Template Generator`
+2. Update configuration keys in `settings.json`
+3. Uninstall the old extension
+
+Templates remain fully compatible.
+
+---
+
+<details>
+<summary>Click to expand old extension's CHANGELOG</summary>
+
+## [3.2.1] - 2025-11-26
+### Deprecated
+- ⚠️ **This extension has been deprecated and renamed to "Custom Template Generator"**
+- New extension ID: `qualyyy.vscode-custom-template-generator`
+- This is the final update to this extension
+- Please migrate to the new extension: [Install Custom Template Generator](https://marketplace.visualstudio.com/items?itemName=qualyyy.vscode-custom-template-generator)
+
+### Migration
+See the README for migration instructions.
+
+
 ## [3.2.0] - 2025-11-20
 ### Added
 - **NEW PROPERTY**: `ignoredFolders`
@@ -231,3 +270,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configuration properties `customTemplateGenerator.structures` and `customTemplateGenerator.templatesDirectory`.
 - MIT license.
 - Icon and metadata setup.
+
+</details>
