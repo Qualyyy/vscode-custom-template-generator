@@ -1,7 +1,7 @@
 {
   "name": "folder-template-generator",
   "displayName": "Folder Template Generator",
-  "description": "Generate folder structures based on user-made templates",
+  "description": "Generate files and folder structures based on user-made templates",
   "publisher": "Qualyyy",
   "keywords": [
     "template",
