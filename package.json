@@ -1,7 +1,7 @@
 {
   "name": "folder-template-generator",
-  "displayName": "Folder Template Generator",
-  "description": "Generate files and folder structures based on user-made templates",
+  "displayName": "[Deprecated] Folder Template Generator",
+  "description": "This extension is deprecated. Use the [Custom Template Generator](https://marketplace.visualstudio.com/items?itemName=qualyyy.vscode-custom-template-generator) extension instead.",
   "publisher": "Qualyyy",
   "keywords": [
     "template",
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "icon": "resources/icon.png",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Qualyyy/vscode-folder-template-generator.git"
