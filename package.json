@@ -1,5 +1,5 @@
 {
-  "name": "custom-template-generator",
+  "name": "vscode-custom-template-generator",
   "displayName": "Custom Template Generator",
   "description": "Generate files and folder structures based on user-made templates",
   "publisher": "Qualyyy",
