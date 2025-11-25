@@ -115,7 +115,7 @@ export function getOptionals(templateContent: string): Optional[] {
 }
 
 export function getDirectoryContent(directory: string, templatesDirectory: string): directoryItem[] {
-    const config = vscode.workspace.getConfiguration('folderTemplateGenerator');
+    const config = vscode.workspace.getConfiguration('customTemplateGenerator');
     let ignoredFolders = config.get<string[]>('ignoredFolders') || [];
     ignoredFolders = ignoredFolders.map(folder => path.normalize(folder));
 

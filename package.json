@@ -1,6 +1,6 @@
 {
-  "name": "folder-template-generator",
-  "displayName": "Folder Template Generator",
+  "name": "custom-template-generator",
+  "displayName": "Custom Template Generator",
   "description": "Generate files and folder structures based on user-made templates",
   "publisher": "Qualyyy",
   "keywords": [
@@ -13,10 +13,10 @@
   ],
   "license": "MIT",
   "icon": "resources/icon.png",
-  "version": "3.2.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Qualyyy/vscode-folder-template-generator.git"
+    "url": "https://github.com/Qualyyy/vscode-custom-template-generator.git"
   },
   "engines": {
     "vscode": "^1.95.0"
@@ -29,27 +29,27 @@
   "contributes": {
     "commands": [
       {
-        "command": "folder-template-generator.generateTemplate",
+        "command": "custom-template-generator.generateTemplate",
         "title": "Generate Template"
       },
       {
-        "command": "folder-template-generator.generateFile",
+        "command": "custom-template-generator.generateFile",
         "title": "Generate File"
       },
       {
-        "command": "folder-template-generator.editTemplates",
+        "command": "custom-template-generator.editTemplates",
         "title": "Edit Templates"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "folder-template-generator.generateTemplate",
+          "command": "custom-template-generator.generateTemplate",
           "when": "explorerResourceIsFolder",
           "group": "navigation@9"
         },
         {
-          "command": "folder-template-generator.generateFile",
+          "command": "custom-template-generator.generateFile",
           "when": "explorerResourceIsFolder",
           "group": "navigation@9"
         }
@@ -58,15 +58,15 @@
     "viewsWelcome": [
       {
         "view": "explorer",
-        "contents": "\n[📂 Create folder from template](command:folder-template-generator.generateTemplate)",
+        "contents": "\n[📂 Create folder from template](command:custom-template-generator.generateTemplate)",
         "when": "workbenchState == empty"
       }
     ],
     "configuration": [
       {
-        "title": "Folder Template Generator",
+        "title": "Custom Template Generator",
         "properties": {
-          "folderTemplateGenerator.structures": {
+          "customTemplateGenerator.structures": {
             "type": "array",
             "items": {
               "type": "object",
@@ -156,11 +156,11 @@
               }
             ]
           },
-          "folderTemplateGenerator.templatesDirectory": {
+          "customTemplateGenerator.templatesDirectory": {
             "type": "string",
             "default": ""
           },
-          "folderTemplateGenerator.ignoredFolders": {
+          "customTemplateGenerator.ignoredFolders": {
             "type": "array",
             "description": "Ignore these folders when prompted to pick a file template",
             "items": {

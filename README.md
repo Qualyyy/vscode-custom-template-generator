@@ -1,26 +1,18 @@
 
 
-# Folder Template Generator
-![Version](https://img.shields.io/visual-studio-marketplace/v/Qualyyy.folder-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Version&color=green)
-![Installs](https://img.shields.io/visual-studio-marketplace/i/Qualyyy.folder-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Installs&color=blue)
-![Rating](https://img.shields.io/vscode-marketplace/r/Qualyyy.folder-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Rating&color=yellow)<br>
+# Custom Template Generator
+![Version](https://img.shields.io/visual-studio-marketplace/v/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Version&color=green)
+![Installs](https://img.shields.io/visual-studio-marketplace/i/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Installs&color=blue)
+![Rating](https://img.shields.io/vscode-marketplace/r/Qualyyy.custom-template-generator?style=flat&logo=visual-studio-code&logoColor=white&label=Rating&color=yellow)<br>
 ![License](https://img.shields.io/badge/License-MIT-purple.svg?style=flat&logoColor=white)
-![Last Updated](https://img.shields.io/github/last-commit/Qualyyy/vscode-folder-template-generator?style=flat&logo=github&logoColor=white&label=Last%20Updated&color=orange)
+![Last Updated](https://img.shields.io/github/last-commit/Qualyyy/vscode-custom-template-generator?style=flat&logo=github&logoColor=white&label=Last%20Updated&color=orange)
 
-**Folder Template Generator** is a Visual Studio Code extension that lets you quickly scaffold project folders and files from customizable templates, with variable substitution, optional files/lines, and robust cross-platform validation.
-
-**⚠️ Version 3.0.0 BREAKING CHANGE**  
-Optionals in template files should now have a '?': `[[?opt]]` instead of `[[opt]]`.  
-New command `generateFile`.  
-See the [Changelog]([Changelog](CHANGELOG.md#300--2025-11-19)) for details.
-
-**⚠️ Version 2.0.0 BREAKING CHANGE**  
-Template variables now use **double square brackets** `[[var]]` instead of `[var]`.  
-See the [Changelog](CHANGELOG.md#200--2025-08-24) for details.
+**Custom Template Generator** is a Visual Studio Code extension that lets you quickly scaffold project folders and files from customizable templates, with variable substitution, optional files/lines, and cross-platform validation.
 
 ## Features
 
-- **Generate entire folder/file structures** for new projects with a single command.
+- **Generate entire folder structures** for new projects with a single command.
+- **Generate individual files** from local templates.
 - **Customizable templates:** Define your own folder structures in your VS Code settings and create local file templates.
 - **Variable prompts with defaults:** When generating a structure, the extension prompts you for variables (like project name or language) and automatically replaces them in your templates. Each variable can have a default value. These can be set in the folder structures.
 - **Optional files and template lines:** Use `[[?optionalKey]]` markers in your templates and structures to conditionally include files or lines.
@@ -37,13 +29,13 @@ See the [Changelog](CHANGELOG.md#200--2025-08-24) for details.
 4. **Decide on optional features** (e.g., include CSS or JS).
 5. The extension creates the specified folders and files, filling in templates with your values and skipping invalid or existing items.
 
-📖 **Want more detailed guidance?** Check out the [Complete Step-by-Step Guide](https://github.com/Qualyyy/vscode-folder-template-generator/blob/master/docs/guide.md) for step-by-step examples.
+📖 **Want more detailed guidance?** Check out the [Complete Step-by-Step Guide](https://github.com/Qualyyy/vscode-custom-template-generator/blob/master/docs/guide.md) for step-by-step examples.
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-### `folderTemplateGenerator.structures`
+### `customTemplateGenerator.structures`
 
 An array of structure definitions. Each structure specifies:
 
@@ -59,15 +51,29 @@ An array of structure definitions. Each structure specifies:
     - `optional`: *(optional)* A key that makes this item optional, shown as a prompt.
 
 
-### `folderTemplateGenerator.templatesDirectory`
+### `customTemplateGenerator.templatesDirectory`
 
 A string path to the directory containing your template files. Template files should contain the content you want to generate for each file type with the variable and optional names between square brackets.
+
+
+## 📦 Migrating from "Folder Template Generator"
+
+If you previously used "Folder Template Generator":
+
+1. ✅ Your templates are fully compatible
+2. Update your settings (find `folderTemplateGenerator.` and replace with `customTemplateGenerator.`)
+3. Uninstall the old extension
+
+### Settings Migration:
+
+- Old: "folderTemplateGenerator.templatesPath": "~/.vscode-templates"
+- New: "customTemplateGenerator.templatesPath": "~/.vscode-templates"
 
 
 ## Example `settings.json`
 
 ```json
-"folderTemplateGenerator.structures": [
+"customTemplateGenerator.structures": [
   {
     "name": "Website",
     "createNewFolder": true, //Optional
@@ -108,7 +114,7 @@ A string path to the directory containing your template files. Template files sh
     ]
   }
 ],
-"folderTemplateGenerator.templatesDirectory": "C:/.Personal/file-templates"
+"customTemplateGenerator.templatesDirectory": "C:/.Personal/file-templates"
 ```
 
 ## Example `indexHtml.html` template
@@ -155,16 +161,16 @@ After creation, you can instantly revert all created files and folders.
 
 ## Changelog
 
-See the [full changelog on GitHub](https://github.com/Qualyyy/vscode-folder-template-generator/blob/master/CHANGELOG.md).
+See the [full changelog on GitHub](https://github.com/Qualyyy/vscode-custom-template-generator/blob/master/CHANGELOG.md).
 
 ## Contributing \& Feedback
 
 Found a bug or want a new feature?
-- Open an issue or pull request at [GitHub Repo](https://github.com/Qualyyy/vscode-folder-template-generator).
+- Open an issue or pull request at [GitHub Repo](https://github.com/Qualyyy/vscode-custom-template-generator).
 - Reach out on Discord: **@qualyyy**
 
 ## Extension Guidelines
 
 - [VS Code Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-**Enjoy using Folder Template Generator!**
+**Enjoy using Custom Template Generator!**
