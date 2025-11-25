@@ -30,15 +30,15 @@
     "commands": [
       {
         "command": "custom-template-generator.generateTemplate",
-        "title": "Generate Template"
+        "title": "Templates: Generate Template"
       },
       {
         "command": "custom-template-generator.generateFile",
-        "title": "Generate File"
+        "title": "Templates: Generate File"
       },
       {
         "command": "custom-template-generator.editTemplates",
-        "title": "Edit Templates"
+        "title": "Templates: Edit Templates"
       }
     ],
     "menus": {
