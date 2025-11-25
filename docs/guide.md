@@ -1,4 +1,4 @@
-# Folder Template Generator - Complete Guide
+# Custom Template Generator - Complete Guide
 
 A VS Code extension by Qualyyy
 
@@ -121,7 +121,7 @@ Example:
 
 1. Go to your vscode settings and search for the extension:
    ```
-   @ext:Qualyyy.folder-template-generator
+   @ext:Qualyyy.custom-template-generator
    ```
 
 2. To add or edit structures, click on 'Edit in settings.json'
@@ -133,7 +133,7 @@ Example:
 Here's a complete example structure that demonstrates all features:
 
 ```json
-"folderTemplateGenerator.structures": [
+"customTemplateGenerator.structures": [
   {
     "name": "Website",
     "variables": [
@@ -299,8 +299,8 @@ If the extension doesn't work as expected:
 ## Credits
 Created by Qualyyy
 
-- [**GitHub Repository**](https://github.com/Qualyyy/vscode-folder-template-generator)
-- [**VS Code Marketplace**](https://marketplace.visualstudio.com/items?itemName=Qualyyy.folder-template-generator)
+- [**GitHub Repository**](https://github.com/Qualyyy/vscode-custom-template-generator)
+- [**VS Code Marketplace**](https://marketplace.visualstudio.com/items?itemName=Qualyyy.custom-template-generator)
 - **Discord**: qualyyy 
 
 Thanks for your support! 🎉

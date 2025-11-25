@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { Structure } from '../types';
 
 export async function getConfig(): Promise<{ structures: Structure[], templatesDirectory: string }> {
-    const config = vscode.workspace.getConfiguration('folderTemplateGenerator');
+    const config = vscode.workspace.getConfiguration('customTemplateGenerator');
     const structures = config.get<Structure[]>('structures') || [];
     let templatesDirectory = config.get<string>('templatesDirectory') || '';
 
@@ -11,10 +11,10 @@ export async function getConfig(): Promise<{ structures: Structure[], templatesD
     if (!fs.existsSync(templatesDirectory)) {
         let errorMessage = '';
         if (templatesDirectory.trim() === '') {
-            errorMessage = 'No template directory configured.\nPlease set "folderTemplateGenerator.templatesDirectory" in your settings.';
+            errorMessage = 'No template directory configured.\nPlease set "customTemplateGenerator.templatesDirectory" in your settings.';
         }
         else {
-            errorMessage = `The configured templates directory was not found: "${templatesDirectory}".\nPlease update "folderTemplateGenerator.templatesDirectory" in your settings.`;
+            errorMessage = `The configured templates directory was not found: "${templatesDirectory}".\nPlease update "customTemplateGenerator.templatesDirectory" in your settings.`;
         }
         templatesDirectory = '';
         const pickDirectory = await vscode.window.showErrorMessage(errorMessage, { modal: true }, 'Pick directory') === 'Pick directory';
@@ -28,7 +28,7 @@ export async function getConfig(): Promise<{ structures: Structure[], templatesD
             const templatesDirectoryUri = await vscode.window.showOpenDialog(options);
             if (templatesDirectoryUri?.[0]) {
                 templatesDirectory = templatesDirectoryUri[0].fsPath.replaceAll('\\', '/');
-                vscode.workspace.getConfiguration('folderTemplateGenerator').update('templatesDirectory', templatesDirectory, vscode.ConfigurationTarget.Global);
+                vscode.workspace.getConfiguration('customTemplateGenerator').update('templatesDirectory', templatesDirectory, vscode.ConfigurationTarget.Global);
                 await vscode.window.showInformationMessage(`Updated templatesDirectory to ${templatesDirectory}.`, { modal: true });
             }
             else {
