@@ -1,6 +1,6 @@
 name: 📝 Docs issue report
 description: Describe this issue template's purpose here.
-title: "[docs] <title>"
+title: "[docs]: "
 labels: ["documentation"]
 assignees:
   - Qualyyy
