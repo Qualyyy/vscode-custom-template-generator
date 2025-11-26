@@ -1,8 +1,9 @@
 name: Bug report
 about: Create a report to help us improve
-title: "[bug]"
-labels: [bug]
-assignees: [Qualyyy]
+title: "[bug]: "
+labels: ["bug"]
+assignees:
+  - Qualyyy
 body:
   - type: textarea
     attributes:
@@ -10,7 +11,6 @@ body:
       description: A clear and concise description of what the bug is.
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: To Reproduce
@@ -22,21 +22,18 @@ body:
         4. See error
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Screenshots
       description: If applicable, add screenshots to help explain your problem.
     validations:
       required: false
-
   - type: textarea
     attributes:
       label: Additional context
