@@ -166,7 +166,7 @@ See the [full changelog on GitHub](https://github.com/Qualyyy/vscode-custom-temp
 ## Contributing \& Feedback
 
 Found a bug or want a new feature?
-- Open an issue or pull request at [GitHub Repo](https://github.com/Qualyyy/vscode-custom-template-generator).
+- Open an issue on [GitHub](https://github.com/Qualyyy/vscode-custom-template-generator/issues/new/choose).
 - Reach out on Discord: **@qualyyy**
 
 ## Extension Guidelines
