@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "icon": "resources/icon.png",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Qualyyy/vscode-custom-template-generator.git"
@@ -30,15 +30,15 @@
     "commands": [
       {
         "command": "custom-template-generator.generateTemplate",
-        "title": "Generate Template"
+        "title": "Templates: Generate Template"
       },
       {
         "command": "custom-template-generator.generateFile",
-        "title": "Generate File"
+        "title": "Templates: Generate File"
       },
       {
         "command": "custom-template-generator.editTemplates",
-        "title": "Edit Templates"
+        "title": "Templates: Edit Templates"
       }
     ],
     "menus": {
