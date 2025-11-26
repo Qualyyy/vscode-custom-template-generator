@@ -55,6 +55,11 @@ An array of structure definitions. Each structure specifies:
 
 A string path to the directory containing your template files. Template files should contain the content you want to generate for each file type with the variable and optional names between square brackets.
 
+### `customTemplateGenerator.ignoredFolders`
+
+When generating a single file from a template, these folders won't show up in the template selection. They will however still be available to use in your structures.<br>
+Default value: `[".git"]`
+
 
 ## 📦 Migrating from "Folder Template Generator"
 
@@ -114,7 +119,8 @@ If you previously used "Folder Template Generator":
     ]
   }
 ],
-"customTemplateGenerator.templatesDirectory": "C:/.Personal/file-templates"
+"customTemplateGenerator.templatesDirectory": "C:/.Personal/file-templates",
+"customTemplateGenerator.ignoredFolders": [".git", "other-templates"],
 ```
 
 ## Example `indexHtml.html` template
